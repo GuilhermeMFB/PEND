@@ -1,0 +1,16 @@
+document.getElementById("conteudo").innerHTML = "<p>Olá, mundo DOM! (Código HTML = inner.html)</p>";
+document.getElementById("mensagem").innerHTML = "<p>Texto simples, sem html (Código HTML = TextContent </p>";
+document.getElementById("foto").setAttribute("src", "https://midias.correiobraziliense.com.br/_midias/jpg/2025/04/02/mc_negao_original-49016844.jpg");
+let url = document.getElementById("link").getAttribute("href");
+console.log(url); 
+document.getElementById("caixa").style.backgroundColor = "lightblue";
+document.getElementById("alerta").classList.add("destaque");
+document.getElementById("alert").classList.remove("oculto");
+let novoParagrafo = document.createElement("p");
+novoParagrafo.textContent = "Este elemento foi criado pelo JavaScript!";
+document.getElementById("container").appendChild(novoParagrafo);
+let novoItem = document.createElement("li");
+novoItem.textContent = "Item Novo";
+document.getElementById("lista").appendChild(novoItem);
+let item1 = document.getElementById("item1");
+document.getElementById("list").removeChild(item1);
