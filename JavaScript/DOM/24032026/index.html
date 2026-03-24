@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validação de E-mail</title>
+</head>
+<body>
+    <h2>Validação de E-mail</h2>
+    
+    E-mail: <input type="text" id="emailInput"><br><br>
+    <button onclick="validarEmail()">Validar</button><br><br>
+    
+    <div id="mensagemErro" style="color: red; display: none;">❌ O e-mail deve conter @ e .</div>
+    <div id="mensagemSucesso" style="color: green; display: none;">✅ E-mail válido!</div>
+
+    <script src="script.js"></script>
+<hr>
+
+Senha: <input type="password" id="senhaInput" oninput="verificarForca()"><br><br>
+<div id="forcaSenha" style="font-weight: bold;"></div>
+<hr>
+
+</body>
+</html>
