@@ -1,0 +1,596 @@
+/* ==============================================
+   RESET & BASE
+   CORREÇÃO: box-sizing border-box em tudo —
+   sem isso, padding somava à largura e os
+   inputs vazavam para fora do container.
+   ============================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Importa fonte mais elegante que Arial */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+/* ==============================================
+   BODY & LAYOUT
+   ============================================== */
+body {
+    font-family: 'DM Sans', Arial, sans-serif;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 60%, #90caf9 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* ==============================================
+   CARD DO FORMULÁRIO
+   ============================================== */
+.form-container {
+    background: white;
+    padding: 36px 32px 28px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    max-width: 440px;
+}
+
+/* ==============================================
+   CABEÇALHO
+   ============================================== */
+.form-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* Logotipo simples */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #1565c0, #42a5f5);
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(21, 101, 192, 0.35);
+}
+
+h2 {
+    color: #1a237e;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.subtitulo {
+    color: #78909c;
+    font-size: 13px;
+}
+
+/* ==============================================
+   GRUPOS DE INPUT
+   ============================================== */
+.input-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #37474f;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* ==============================================
+   INPUTS
+   CORREÇÃO: width: 100% funciona corretamente
+   agora graças ao box-sizing border-box no topo.
+   ============================================== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+    width: 100%;
+    padding: 11px 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #263238;
+    background: #fafafa;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus {
+    border-color: #1e88e5;
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+}
+
+/* Estado de erro */
+input.erro {
+    border-color: #e53935;
+    background: #fff5f5;
+}
+
+input.erro:focus {
+    box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.15);
+}
+
+/* Estado de sucesso */
+input.ok {
+    border-color: #43a047;
+    background: #f1f8f1;
+}
+
+input.ok:focus {
+    box-shadow: 0 0 0 3px rgba(67, 160, 71, 0.15);
+}
+
+/* ==============================================
+   CONTAINER DE SENHA (com botão olhinho)
+   ============================================== */
+.senha-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* CORREÇÃO: o input dentro do senha-container precisa ter
+   padding-right suficiente para não sobrepor o ícone */
+.senha-container input {
+    width: 100%;
+    padding-right: 44px;
+}
+
+/* CORREÇÃO: era <span> no HTML original — span não aceita
+   eventos de teclado nativos para acessibilidade.
+   Mudamos para <button type="button"> no HTML.
+   Aqui zeramos o visual de botão e aplicamos o ícone. */
+.olhinho {
+    position: absolute;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: url('https://cdn-icons-png.flaticon.com/512/709/709612.png') no-repeat center;
+    background-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+    opacity: 0.45;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+    border-radius: 4px;
+    padding: 0;
+}
+
+.olhinho:hover {
+    opacity: 0.85;
+}
+
+.olhinho.ativo {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/2767/2767146.png');
+    background-size: 20px;
+    opacity: 0.75;
+}
+
+/* ==============================================
+   BARRA DE FORÇA DA SENHA
+   ============================================== */
+.forca-senha {
+    height: 5px;
+    background: #eceff1;
+    border-radius: 3px;
+    margin: 8px 0 4px;
+    overflow: hidden;
+}
+
+#barra-forca {
+    display: block;
+    height: 100%;
+    width: 0%;
+    transition: width 0.35s ease, background 0.35s ease;
+    border-radius: 3px;
+}
+
+/* Classes aplicadas pelo JS na barra */
+.senha-fraca  { background: #e53935; width: 30%; }
+.senha-media  { background: #fb8c00; width: 60%; }
+.senha-forte  { background: #43a047; width: 100%; }
+
+/* Texto de feedback da força */
+.forca-texto {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    min-height: 16px;
+}
+
+/* ==============================================
+   MENSAGENS DE ERRO POR CAMPO
+   CORREÇÃO: seletor era span[id^="erro-"] que
+   só pegava spans com id começando em "erro-".
+   Unificamos em classe .erro-msg para ser mais
+   robusto e cobrir todos os erros.
+   ============================================== */
+.erro-msg {
+    color: #e53935;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    min-height: 16px;
+    transition: opacity 0.2s;
+}
+
+/* ==============================================
+   TELEFONES DINÂMICOS
+   ============================================== */
+#telefones {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* Linha de telefone: input + botão remover lado a lado */
+.telefone-linha {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* CORREÇÃO: input dentro de flex precisa de flex:1 para
+   não encolher e deixar o botão "-" ao lado */
+.telefone-linha input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Botão de remover telefone */
+.btn-remover {
+    width: 34px;
+    height: 38px;
+    background: #ffebee;
+    color: #e53935;
+    border: 1.5px solid #ef9a9a;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.btn-remover:hover {
+    background: #ffcdd2;
+    border-color: #e53935;
+}
+
+/* ==============================================
+   BOTÕES PRINCIPAIS
+   ============================================== */
+button {
+    font-family: inherit;
+}
+
+/* Botão "Adicionar telefone" */
+#add-telefone {
+    width: auto;
+    background: transparent;
+    color: #1e88e5;
+    border: 1.5px solid #1e88e5;
+    padding: 7px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    margin-top: 2px;
+}
+
+#add-telefone:hover {
+    background: #e3f2fd;
+}
+
+/* Botão principal de submit */
+#btn-cadastrar {
+    background: linear-gradient(135deg, #1565c0, #1e88e5);
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    width: 100%;
+    margin-top: 14px;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s, transform 0.1s;
+    box-shadow: 0 4px 14px rgba(21, 101, 192, 0.35);
+}
+
+#btn-cadastrar:hover {
+    opacity: 0.9;
+}
+
+#btn-cadastrar:active {
+    transform: scale(0.98);
+}
+
+/* ==============================================
+   MENSAGEM FINAL (sucesso / erro geral)
+   ============================================== */
+#mensagem {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    display: none; /* JS vai exibir com display: block */
+}
+
+.sucesso {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1.5px solid #a5d6a7;
+    text-align: left;
+}
+
+.resumo-titulo {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+    color: #1b5e20;
+}
+
+.resumo-subtitulo {
+    font-size: 12px;
+    text-align: center;
+    color: #388e3c;
+    margin-bottom: 10px;
+}
+
+.resumo-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.resumo-lista li {
+    background: #f1f8f1;
+    border: 1px solid #c8e6c9;
+    border-radius: 6px;
+    padding: 7px 12px;
+    font-size: 13px;
+    color: #2e7d32;
+}
+
+/* Linha da senha no resumo: texto + olhinho alinhados */
+.resumo-senha-linha {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Olhinho do resumo — mesma aparência do olhinho do formulário */
+.olhinho-resumo {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: url('https://cdn-icons-png.flaticon.com/512/709/709612.png') no-repeat center;
+    background-size: 18px;
+    background-color: transparent;
+    cursor: pointer;
+    opacity: 0.45;
+    transition: opacity 0.2s;
+    border-radius: 4px;
+    padding: 0;
+    flex-shrink: 0;
+    margin-left: auto; /* empurra o ícone para a direita */
+}
+
+.olhinho-resumo:hover {
+    opacity: 0.85;
+}
+
+.olhinho-resumo.ativo {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/2767/2767146.png');
+    background-size: 18px;
+    opacity: 0.75;
+}
+
+.erro-final {
+    background: #ffebee;
+    color: #c62828;
+    border: 1.5px solid #ef9a9a;
+}
+
+/* Botão "Novo cadastro" dentro do resumo de sucesso */
+#btn-novo-cadastro {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px;
+    background: linear-gradient(135deg, #1565c0, #1e88e5);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s;
+}
+
+#btn-novo-cadastro:hover {
+    opacity: 0.88;
+}
+
+/* ==============================================
+   SEÇÃO DE CADASTROS REALIZADOS
+   ============================================== */
+#secao-cadastros {
+    width: 100%;
+    max-width: 440px;
+    margin-top: 24px;
+}
+
+.cadastros-header {
+    margin-bottom: 12px;
+}
+
+.cadastros-header h3 {
+    color: #1a237e;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Bolinha com o contador de cadastros */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #1e88e5;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 999px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+}
+
+/* Card de cada cadastro */
+.cadastro-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    margin-bottom: 14px;
+    overflow: hidden;
+    border: 1.5px solid #e3f2fd;
+    transition: box-shadow 0.2s;
+}
+
+.cadastro-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Topo do card: avatar + nome/email + botão excluir */
+.card-topo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #e3f2fd, #f5f9ff);
+    border-bottom: 1px solid #e3f2fd;
+}
+
+/* Avatar com inicial do nome */
+.card-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1565c0, #42a5f5);
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(21,101,192,0.3);
+}
+
+.card-info-topo {
+    flex: 1;
+    min-width: 0;
+}
+
+.card-nome {
+    display: block;
+    font-size: 14px;
+    color: #1a237e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-email {
+    display: block;
+    font-size: 12px;
+    color: #78909c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Botão de excluir cadastro */
+.btn-excluir {
+    background: #ffebee;
+    color: #e53935;
+    border: 1.5px solid #ef9a9a;
+    border-radius: 7px;
+    padding: 6px 11px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: background 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+}
+
+.btn-excluir:hover {
+    background: #ffcdd2;
+    border-color: #e53935;
+}
+
+/* Lista de dados dentro do card */
+.card-dados {
+    list-style: none;
+    padding: 12px 16px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.card-dados li {
+    font-size: 13px;
+    color: #37474f;
+    padding: 6px 10px;
+    background: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #e8edf2;
+}
