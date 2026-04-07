@@ -1,88 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro TechConnect</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- CORREÇÃO: meta viewport adicionado para responsividade -->
+    <meta charset="UTF-8"> 
+    <title>Cadastro</title> 
+    
+    <!-- Importação do CSS para estilizar a página -->
+    <link rel="stylesheet" href="style.css"> 
+    
+    <!-- Biblioteca de ícones (usada para olho da senha e botão de adicionar telefone) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
+
 <body>
-    <div class="form-container">
-        <form id="formCadastro" novalidate>
-            <!-- novalidate: desativa validação nativa do browser, usamos a nossa via JS -->
 
-            <div class="form-header">
-                <div class="logo">TC</div>
-                <h2>Cadastro TechConnect</h2>
-                <p class="subtitulo">Preencha os dados para criar sua conta</p>
+    <!-- Formulário de cadastro de usuário -->
+    <form>
+
+        <!-- Container principal que organiza todo o conteúdo -->
+        <div class="container">
+            <h2>Cadastro de Usuário</h2>
+
+            <!-- Cada campo está separado em blocos para facilitar estilização e validação -->
+            
+            <!-- Nome -->
+            <div class="container-input">
+                <label>Nome:</label>
+                <input type="text" id="nome" class="input" placeholder="Digite seu nome:" required><br>
+                <span id="msgNome"></span> <!-- Área para mensagens de erro/validação -->
             </div>
 
-            <!-- CAMPO: Nome -->
-            <!-- CORREÇÃO: label agora tem atributo "for" apontando para o id do input (acessibilidade) -->
-            <div class="input-group">
-                <label for="nome">Nome completo *</label>
-                <input type="text" id="nome" placeholder="Digite seu nome completo" autocomplete="name">
-                <span class="erro-msg" id="erro-nome" aria-live="polite"></span>
+            <!-- Email -->
+            <div class="container-input">
+                <label>Email:</label>
+                <input type="email" id="email" class="input" placeholder="email@email.com" required><br>
+                <span id="msgEmail"></span>
             </div>
 
-            <!-- CAMPO: Email -->
-            <div class="input-group">
-                <label for="email">E-mail *</label>
-                <input type="email" id="email" placeholder="seu@email.com" autocomplete="email">
-                <span class="erro-msg" id="erro-email" aria-live="polite"></span>
+            <!-- Senha com ícone para mostrar/ocultar -->
+            <div class="container-input">
+                <label>Senha:</label>
+                <input type="password" id="senha" class="input" placeholder="Sua senha:" required>
+                <i class="bi bi-eye-fill icon" id="eye"></i>
+                <span id="msgSenha"></span>
             </div>
 
-            <!-- CAMPO: Senha -->
-            <div class="input-group">
-                <label for="senha">Senha *</label>
-                <div class="senha-container">
-                    <input type="password" id="senha" placeholder="Mínimo 8 caracteres" autocomplete="new-password">
-                    <!-- CORREÇÃO: botão com type="button" para não submeter o form ao clicar -->
-                    <button type="button" class="olhinho" id="olhinho" aria-label="Mostrar/ocultar senha"></button>
-                </div>
-                <!-- Barra de força da senha -->
-                <div class="forca-senha" id="forca-senha">
-                    <span id="barra-forca"></span>
-                </div>
-                <span class="forca-texto" id="forca-texto"></span>
-                <span class="erro-msg" id="erro-senha" aria-live="polite"></span>
+            <!-- Confirmação de senha -->
+            <div class="container-input">
+                <label>Confirmar senha:</label>
+                <input type="password" id="confirmarSenha" class="input" placeholder="Confirme sua senha:" required>
+                <i class="bi bi-eye-fill icon" id="eyeConfirmar"></i>
+                <span id="msgConfirmarSenha"></span>
             </div>
 
-            <!-- CAMPO: Confirmar Senha -->
-            <div class="input-group">
-                <label for="confirmar-senha">Confirmar Senha *</label>
-                <div class="senha-container">
-                    <input type="password" id="confirmar-senha" placeholder="Repita a senha" autocomplete="new-password">
-                    <button type="button" class="olhinho" id="olhinho-confirmar" aria-label="Mostrar/ocultar confirmação de senha"></button>
-                </div>
-                <span class="erro-msg" id="erro-confirmar" aria-live="polite"></span>
+            <!-- Endereço -->
+            <div class="container-input">
+                <label>Endereço</label>
+                <input type="text" id="endereco" class="input" placeholder="Seu endereço:" required><br>
+                <span id="msgEndereco"></span>
             </div>
 
-            <!-- CAMPO: Endereço -->
-            <div class="input-group">
-                <label for="endereco">Endereço *</label>
-                <input type="text" id="endereco" placeholder="Rua, número, bairro" autocomplete="street-address">
-                <span class="erro-msg" id="erro-endereco" aria-live="polite"></span>
+            <!-- Telefone com opção de adicionar vários números -->
+            <div class="container-input">
+                <label>Telefones:</label>
+                <input type="text" id="telefone" class="input" placeholder="Seu telefone:" required maxlength="11"><br>
+                <i class="bi bi-plus-circle icon" id="plus"></i>
+                <span id="msgTelefone"></span>
+
+                <!-- Lista onde os telefones adicionados vão aparecer -->
+                <ul id="lista"></ul>
             </div>
 
-            <!-- CAMPO: Telefones (dinâmico) -->
-            <!-- CORREÇÃO: seção de telefones agora existe no HTML (estava só no CSS antes) -->
-            <div class="input-group">
-                <label>Telefone(s) *</label>
-                <div id="telefones">
-                    <!-- Os campos de telefone são gerados pelo JS -->
-                </div>
-                <button type="button" id="add-telefone">+ Adicionar telefone</button>
-                <span class="erro-msg" id="erro-telefone" aria-live="polite"></span>
-            </div>
+            <!-- Botão controlado por JavaScript (não envia automaticamente) -->
+            <button type="button" id="cadastrar">Cadastrar</button><br>
 
-            <button type="submit" id="btn-cadastrar">Cadastrar</button>
-            <div id="mensagem" role="alert" aria-live="assertive"></div>
+            <!-- Mensagem final de sucesso ou erro -->
+            <span id="msgButton"></span>
 
-        </form>
-    </div>
+        </div>
+    </form>
 
+    <!-- Script responsável pelas validações e interações -->
     <script src="script.js"></script>
+
 </body>
+
 </html>

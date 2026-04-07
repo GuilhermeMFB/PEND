@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #e0e0e0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-container {
+    background: rgba(30, 30, 50, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+}
+
+h2, h3 {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+h2 { font-size: 28px; }
+h3 { font-size: 22px; color: #4a90e2; }
+
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 16px 45px 16px 20px;
+    background: rgba(50, 50, 70, 0.8);
+    border: 2px solid rgba(100, 100, 150, 0.4);
+    border-radius: 12px;
+    font-size: 16px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: #a0a0b0;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    background: rgba(60, 60, 90, 0.95);
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.15);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.toggle-password:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.eye-icon {
+    font-family: 'Material Icons';
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    color: #a0a0b0;
+    transition: color 0.3s ease;
+}
+
+.eye-icon:hover {
+    color: #ffffff;
+}
+
+.strength-indicator {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #a0a0b0;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(100, 100, 150, 0.3);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.error-message {
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    font-size: 12px;
+    color: #ff6b6b;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+    bottom: -25px;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(74, 144, 226, 0.4);
+}
+
+#mensagem {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s ease;
+}
+
+#mensagem.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#mensagem.success { 
+    background: rgba(46, 204, 113, 0.2); 
+    color: #2ecc71; 
+    border: 1px solid rgba(46, 204, 113, 0.4); 
+}
+
+#mensagem.error { 
+    background: rgba(231, 76, 60, 0.2); 
+    color: #e74c3c; 
+    border: 1px solid rgba(231, 76, 60, 0.4); 
+}
+
+/* Lista de cadastros */
+.lista-container {
+    background: rgba(30, 30, 50, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#listaUsuarios {
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#listaUsuarios li {
+    background: rgba(50, 50, 70, 0.6);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-left: 4px solid #4a90e2;
+    transition: all 0.3s ease;
+}
+
+#listaUsuarios li:hover {
+    background: rgba(60, 60, 90, 0.9);
+    transform: translateX(5px);
+}
+
+#listaUsuarios li strong {
+    color: #4a90e2;
+}
+
+@media (max-width: 480px) {
+    .form-container, .lista-container {
+        padding: 25px 20px;
+        margin: 10px;
+    }
+}
