@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f2f2;
+    color: #222;
+    min-height: 100vh;
+}
+
+header {
+    background: #1f1f1f;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 5px solid #e30613;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #00a9e0;
+    font-size: 17px;
+}
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.formulario,
+.produtos {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #00a9e0;
+}
+
+form button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    background: #e30613;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #b9000b;
+}
+
+.titulo-produtos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.titulo-produtos h2 {
+    margin: 0;
+}
+
+.btn-limpar {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-limpar:hover {
+    background: #555;
+}
+
+.produto {
+    border: 1px solid #ddd;
+    border-left: 5px solid #00a9e0;
+    border-radius: 7px;
+    padding: 18px;
+    margin-bottom: 15px;
+    background: #fafafa;
+}
+
+.produto h3 {
+    margin-bottom: 12px;
+    color: #222;
+}
+
+.produto p {
+    margin: 6px 0;
+}
+
+.preco-original {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.preco-final {
+    color: #008000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.desconto {
+    color: #e30613;
+    font-weight: bold;
+}
+
+.acoes {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-excluir {
+    background: #e30613;
+    color: white;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-excluir:hover {
+    background: #b9000b;
+}
+
+.mensagem-vazia {
+    text-align: center;
+    color: #777;
+    padding: 25px;
+}
+
+footer {
+    background: #1f1f1f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+
+    main {
+        width: 94%;
+    }
+
+    .titulo-produtos {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .titulo-produtos h2 {
+        text-align: center;
+    }
+
+    .acoes {
+        flex-direction: column;
+    }
+
+    .btn-excluir {
+        width: 100%;
+    }
+}
