@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow - Organizador de Tarefas</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>TaskFlow</h1>
+        <p>Organizador de Tarefas</p>
+    </header>
+
+    <main>
+
+        <div class="descricao">
+            <h2>Meu Quadro de Tarefas</h2>
+            <p>
+                Arraste as tarefas entre as colunas para atualizar o seu status.
+            </p>
+        </div>
+
+        <section class="kanban">
+
+            <!-- A FAZER -->
+            <div class="coluna" data-status="todo">
+
+                <div class="titulo-coluna">
+                    <h3>📋 A Fazer</h3>
+                    <span class="contador">2</span>
+                </div>
+
+                <div class="area-drop" id="todo">
+
+                    <div class="tarefa" draggable="true" id="tarefa1">
+                        <h4>Estudar JavaScript</h4>
+                        <p>Revisar conceitos de eventos e funções.</p>
+                        <span class="prioridade alta">Alta</span>
+                    </div>
+
+                    <div class="tarefa" draggable="true" id="tarefa2">
+                        <h4>Fazer atividade</h4>
+                        <p>Finalizar a atividade de Drag and Drop.</p>
+                        <span class="prioridade media">Média</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- EM ANDAMENTO -->
+            <div class="coluna" data-status="doing">
+
+                <div class="titulo-coluna">
+                    <h3>⚙️ Em Andamento</h3>
+                    <span class="contador">1</span>
+                </div>
+
+                <div class="area-drop" id="doing">
+
+                    <div class="tarefa" draggable="true" id="tarefa3">
+                        <h4>Desenvolver projeto</h4>
+                        <p>Construir a interface da aplicação.</p>
+                        <span class="prioridade media">Média</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- CONCLUÍDO -->
+            <div class="coluna" data-status="done">
+
+                <div class="titulo-coluna">
+                    <h3>✅ Concluído</h3>
+                    <span class="contador">1</span>
+                </div>
+
+                <div class="area-drop" id="done">
+
+                    <div class="tarefa" draggable="true" id="tarefa4">
+                        <h4>Criar estrutura HTML</h4>
+                        <p>Estrutura inicial da aplicação finalizada.</p>
+                        <span class="prioridade baixa">Baixa</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <div id="mensagem" class="mensagem">
+            Tarefa atualizada com sucesso!
+        </div>
+
+    </main>
+
+  
+
+    <script src="script.js"></script>
+
+</body>
+</html>

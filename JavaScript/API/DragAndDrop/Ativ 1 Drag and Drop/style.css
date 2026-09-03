@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #111827;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+/* CABEÇALHO */
+
+header {
+    background: #1f2937;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 3px solid #2563eb;
+}
+
+header h1 {
+    font-size: 32px;
+    color: #60a5fa;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #cbd5e1;
+}
+
+/* CONTEÚDO */
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.descricao {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.descricao h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.descricao p {
+    color: #94a3b8;
+}
+
+/* KANBAN */
+
+.kanban {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* COLUNAS */
+
+.coluna {
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 18px;
+    min-height: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.titulo-coluna {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.titulo-coluna h3 {
+    font-size: 18px;
+}
+
+.contador {
+    background: #334155;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* ÁREA DE DROP */
+
+.area-drop {
+    min-height: 320px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.area-drop.destino {
+    background: rgba(37, 99, 235, 0.15);
+    border: 2px dashed #60a5fa;
+}
+
+/* TAREFAS */
+
+.tarefa {
+    background: #334155;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 15px;
+    cursor: grab;
+    border-left: 4px solid #3b82f6;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarefa:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+.tarefa:active {
+    cursor: grabbing;
+}
+
+.tarefa h4 {
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.tarefa p {
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+/* PRIORIDADES */
+
+.prioridade {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.alta {
+    background: #7f1d1d;
+    color: #fecaca;
+}
+
+.media {
+    background: #854d0e;
+    color: #fef08a;
+}
+
+.baixa {
+    background: #166534;
+    color: #bbf7d0;
+}
+
+/* MENSAGEM */
+
+.mensagem {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #16a34a;
+    color: white;
+    padding: 15px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.mensagem.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RODAPÉ */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+    margin-top: 30px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 800px) {
+
+    .kanban {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        width: 95%;
+    }
+
+}
