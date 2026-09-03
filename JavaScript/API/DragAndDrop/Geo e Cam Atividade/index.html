@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro de Visita Técnica</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>📍 VisitaTech</h1>
+            <p>Registro de Visita Técnica</p>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="intro">
+            <h2>Registro de Visita Técnica</h2>
+
+            <p>
+                Utilize sua localização e câmera para registrar
+                informações da visita realizada.
+            </p>
+        </section>
+
+
+        <section class="painel">
+
+            <!-- LOCALIZAÇÃO -->
+            <div class="card">
+
+                <div class="card-titulo">
+                    <span class="icone">📍</span>
+
+                    <div>
+                        <h3>Localização</h3>
+                        <p>Informações da sua posição atual</p>
+                    </div>
+                </div>
+
+                <div class="localizacao">
+
+                    <div class="informacao">
+                        <span>Latitude</span>
+                        <strong id="latitude">--</strong>
+                    </div>
+
+                    <div class="informacao">
+                        <span>Longitude</span>
+                        <strong id="longitude">--</strong>
+                    </div>
+
+                    <div class="informacao">
+                        <span>Precisão</span>
+                        <strong id="precisao">--</strong>
+                    </div>
+
+                </div>
+
+                <button id="btnLocalizacao">
+                    📍 Obter localização
+                </button>
+
+                <p id="statusLocalizacao" class="status"></p>
+
+            </div>
+
+
+            <!-- CÂMERA -->
+            <div class="card">
+
+                <div class="card-titulo">
+                    <span class="icone">📷</span>
+
+                    <div>
+                        <h3>Câmera</h3>
+                        <p>Registre uma imagem da visita</p>
+                    </div>
+                </div>
+
+                <div class="camera">
+
+                    <video id="camera" autoplay playsinline></video>
+
+                    <div id="cameraMensagem">
+                        Câmera desligada
+                    </div>
+
+                </div>
+
+                <div class="botoes-camera">
+
+                    <button id="btnCamera">
+                        📷 Ativar câmera
+                    </button>
+
+                    <button id="btnFoto" disabled>
+                        📸 Capturar foto
+                    </button>
+
+                </div>
+
+                <canvas id="foto"></canvas>
+
+                <p id="statusCamera" class="status"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- REGISTRO -->
+        <section class="registro">
+
+            <h2>📋 Resumo do Registro</h2>
+
+            <div class="resumo">
+
+                <div>
+                    <span>Status da localização</span>
+                    <strong id="resumoLocalizacao">
+                        Não registrada
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Status da foto</span>
+                    <strong id="resumoFoto">
+                        Não registrada
+                    </strong>
+                </div>
+
+            </div>
+
+            <button id="btnFinalizar" class="finalizar">
+                ✅ Finalizar registro
+            </button>
+
+            <div id="resultado"></div>
+
+        </section>
+
+    </main>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
