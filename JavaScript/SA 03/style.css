@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #222;
+    color: white;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+main {
+    width: 90%;
+    max-width: 900px;
+
+    margin: 30px auto;
+
+    flex: 1;
+}
+
+.pesquisa {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+input {
+    flex: 1;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 20px;
+
+    background-color: #0066cc;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004c99;
+}
+
+.card {
+    background-color: white;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 2px 5px #ccc;
+}
+
+.card h2 {
+    color: #0066cc;
+
+    margin-bottom: 10px;
+}
+
+.card p {
+    line-height: 1.5;
+
+    margin-bottom: 8px;
+}
+
+.card a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.erro {
+    color: red;
+    text-align: center;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+
+    text-align: center;
+
+    padding: 15px;
+}
